@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Khurram Hashmi</title>
+  <title>Hashmi's Blog</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
 
@@ -49,7 +49,7 @@
             <a class="nav-link" href="{% static 'resume.pdf' %}">Resume</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'allblogs' %}">Blog</a>
+            <a class="nav-link active" href="{% url 'allblogs' %}">Blog</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="https://www.instagram.com/rox_hash/">Instagram</a>
@@ -58,43 +58,39 @@
       </div>
     </nav>
 
+
   </header>
 
   <main role="main">
-
-    <section class="jumbotron text-center">
-      <div class="container">
-        <h1 class="jumbotron-heading">Hi, call me Hashmi</h1>
-        <p class="lead text-muted">Hey, my name is Khurram Hashmi and I love to make Python application. It's the thrill of handling the requests that the people want!</p>
-        <p>
-          <a href="mailto:khurramhashmi2010@gmail.com" class="btn btn-primary my-2">Email me</a>
-        </p>
-        <img src="{% static 'khurram.jpg'%}" height="300"/>
-      </div>
-    </section>
-
-    <div class="album py-5 bg-light">
-      <div class="container">
-
-        <div class="row">
-          {% for job in jobs.all %}
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <img class="card-img-top" src="{{ job.image.url }}" width="100%" height="225" />
-              <div class="card-body">
-                <p class="card-text">{{ job.summary }}</p>
-              </div>
-            </div>
-          </div>
-          {% endfor %}
-      </div>
+    <div class="container">
+      <h1 class="text-center pt-3">Welcome to Hashmi's Blog</h1>
+      <br />
+      <br />
+      <h2>Latest Posts</h2>
+      <hr />
     </div>
+    <div class="row">
+      {% for blog in blogs.all %}
+      <div class="container">
+        <div>
+          <div>
+            <a href="{% url 'detail' blog.id %}"><h3 class="bold-text font-weight-bold">{{ blog.title }}</h3></a>
+            {{ blog.pub_date_pretty }}
+            <br />
+            <img src="{{ blog.image.url }}" width="200" height="200" />
+            <br />
+            <p>{{ blog.summary }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+  </div>
 
   </main>
 
   <footer class="text-muted">
     <div class="container text-center">
-      <p>&copy; Khurram Hashmi {% now "Y" %}</p>
+      <p>&copy; Hashmi {% now "Y" %}</p>
     </div>
   </footer>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
