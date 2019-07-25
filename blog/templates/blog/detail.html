@@ -30,6 +30,15 @@
         font-size: 3.5rem;
       }
     }
+    #logo_container {
+    display:table;
+    height:100px;
+    width:100px;
+    margin:0 auto;
+    text-align:center;
+    border:1px solid #333;
+}
+
   </style>
 
 </head>
@@ -62,7 +71,9 @@
       <div class="container">
             <h1 class="text-center pt-3">{{ blog.title }}</h1>
             <p class="text-center"> {{ blog.pub_date }}</p>
-            <img class="img-fluid" src="{{ blog.image.url }}"/>
+            <div id='logo_container'>
+            <img src="{{ blog.image.url }}" width="400" height="400" />
+            </div>
             <br />
             <br />
             <p>{{ blog.body}}</p>
